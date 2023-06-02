@@ -21,16 +21,17 @@ env = environ.Env(
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = True
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS').split()
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,8 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # local app
     'user',
-    'Category'
+    'Category',
 ]
 
 MIDDLEWARE = [
@@ -83,8 +85,8 @@ DATABASES = {
         'NAME': env('DB_NAME'),
         'USER': env('DB_USER'),
         'PASSWORD': env('DB_PASSWORD'),
+        'PORT': 5432,
         'HOST': 'localhost',
-        'POST': 5432
     }
 }
 
@@ -127,32 +129,3 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'user.User'
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
-    )
-}
-
-SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(seconds=20),
-    "REFRESH_TOKEN_LIFETIME": timedelta(seconds=30),
-    "UPDATE_LAST_LOGIN": True,
-}
-
-REST_AUTH = {
-    'USE_JWT': True,
-    'JWT_AUTH_COOKIE': 'jwt-auth',
-}
-
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = env("EMAIL_HOST")
-EMAIL_PORT = env("EMAIL_PORT")
-EMAIL_HOST_USER = env("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
-EMAIL_USE_TLS = True
-
-MEDIA_URL = "media/"
-MEDIA_ROOT = BASE_DIR / 'media'
