@@ -1,28 +1,18 @@
 from django.db import models
-from django.conf import settings
+from django.utils.text import slugify
 
 
 class Category(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
-    description = models.TextField()
+    category_image = models.ImageField(upload_to='media', null=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    year = models.IntegerField()
-    price = models.FloatField(null=True, blank=True)
-    image = models.ImageField()
-    author = models.ForeignKey('Author', on_delete=models.CASCADE, related_query_name='author')
-    owner = models.ForeignKey('user.User', on_delete=models.CASCADE, null=True, blank=True, related_name='category')
+    position = models.IntegerField(default=1)
 
     def __str__(self):
         return self.title
 
-    @property
-    def image_count(self):
-        return self.image_count
-
-
-class Author(models.Model):
-    name = models.CharField(max_length=255)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
-
+    def save(self, *args, **kwargs):
+        if self.slug:
+            self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)

@@ -41,9 +41,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # local app
+    'drf_yasg',
+    'dj_rest_auth',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_framework_simplejwt',
+    # My app
     'user',
     'Category',
+    'all_for_sale',
+    'commit_vs_like'
 ]
 
 MIDDLEWARE = [
