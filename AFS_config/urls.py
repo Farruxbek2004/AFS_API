@@ -20,7 +20,8 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('category/', include('Category.urls')),
-    path('comment_like_dislike/', include('commit_vs_like.urls'))
+    path('comment_like_dislike/', include('commit_vs_like.urls')),
+    path('user', include('user.urls'))
 ]
 
 swagger_urls = [

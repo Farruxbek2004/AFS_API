@@ -9,7 +9,6 @@ class Comment(models.Model):
     afs = models.ForeignKey('all_for_sale.AFS', on_delete=models.CASCADE, related_name='comment_AFS')
     description = models.TextField(blank=False)
     owner = models.ForeignKey('user.User', on_delete=models.CASCADE, related_name='comment_user')
-    parent = models.ForeignKey('self', on_delete=models.CASCADE, related_name='replies', null=True)
 
     class Mete:
         ordering = ['created_at']
