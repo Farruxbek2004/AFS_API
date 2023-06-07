@@ -8,4 +8,7 @@ psycopg2-binary==2.9.6
 pytest==7.3.1
 Faker==18.7.0
 factory-boy==3.2.1
+facebook-sdk==3.1.0
 Pillow==9.5.0
+google-api-core==2.11.0
+google-api-python-client==2.86.0

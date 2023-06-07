@@ -55,7 +55,9 @@ INSTALLED_APPS = [
     'user',
     'Category',
     'all_for_sale',
-    'commit_vs_like'
+    'commit_vs_like',
+    'Google',
+    'Facebook'
 ]
 
 MIDDLEWARE = [

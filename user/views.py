@@ -16,7 +16,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
 # from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
-# from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
+# from allauth.socialaccount.providers.geogle.views import GoogleOAuth2Adapter
 from AFS_config import settings
 from .models import VerificationCode
 from user.serializers import (

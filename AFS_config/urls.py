@@ -21,7 +21,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('category/', include('Category.urls')),
     path('comment_like_dislike/', include('commit_vs_like.urls')),
-    path('user', include('user.urls'))
+    path('user/', include('user.urls')),
+    path('google/', include('Google.urls')),
+    path('facebook/', include('Facebook.urls'))
 ]
 
 swagger_urls = [

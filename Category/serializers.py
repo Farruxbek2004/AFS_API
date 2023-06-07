@@ -17,5 +17,3 @@ class CategoryCreateSerizlizers(serializers.Serializer):
         model = Category
         fields = ('title', 'slug', 'image', 'created_at', 'position')
         read_only_fields = ('id',)
-
-
